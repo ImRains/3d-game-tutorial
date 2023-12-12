@@ -1,11 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://ywys3t2eych3"]
 
 [ext_resource type="Script" path="res://Scene/Level/level_1.gd" id="1_lkcji"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_1udgl"]
+[ext_resource type="PackedScene" uid="uid://cjhm7w28du2pn" path="res://Asset/Map/map_1.tscn" id="2_uxqli"]
 
 [node name="Level1" type="Node3D" groups=["Level"]]
 script = ExtResource("1_lkcji")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_1udgl")
+[node name="Map1" parent="." instance=ExtResource("2_uxqli")]

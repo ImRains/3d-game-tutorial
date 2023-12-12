@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c6ew7rb0ph7sj"
+path="res://.godot/imported/Ludum Dare 30 - Track 9.wav-60bbe69c56eb55b5fd8a6a7fb13ef411.sample"
+
+[deps]
+
+source_file="res://Asset/Sounds/Music/Abstraction - Ludum Dare 30 Loops/Ludum Dare 30 - Track 9.wav"
+dest_files=["res://.godot/imported/Ludum Dare 30 - Track 9.wav-60bbe69c56eb55b5fd8a6a7fb13ef411.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

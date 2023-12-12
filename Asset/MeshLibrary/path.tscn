@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu3txhim0t3gb"]
+
+[ext_resource type="PackedScene" uid="uid://b7ubgx5e6mcvq" path="res://Asset/Models/Enviroment/path_A.gltf" id="1_kng3o"]
+[ext_resource type="PackedScene" uid="uid://b3ktdtprgxjqs" path="res://Asset/Models/Enviroment/path_B.gltf" id="2_hmniw"]
+[ext_resource type="PackedScene" uid="uid://cwjh5i2nkuyij" path="res://Asset/Models/Enviroment/path_C.gltf" id="3_141g6"]
+[ext_resource type="PackedScene" uid="uid://c1t8wyxib6fiv" path="res://Asset/Models/Enviroment/path_D.gltf" id="4_q8o57"]
+
+[node name="Path" type="Node3D"]
+
+[node name="path_A2" parent="." instance=ExtResource("1_kng3o")]
+
+[node name="path_B2" parent="." instance=ExtResource("2_hmniw")]
+
+[node name="path_C2" parent="." instance=ExtResource("3_141g6")]
+
+[node name="path_D2" parent="." instance=ExtResource("4_q8o57")]

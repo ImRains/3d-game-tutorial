@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c5r2fiqbomneo"
+path="res://.godot/imported/JumpLand1.wav-ea468a3f31d18b458568aa100e61ff18.sample"
+
+[deps]
+
+source_file="res://Asset/Sounds/Sound effects/JumpLand1.wav"
+dest_files=["res://.godot/imported/JumpLand1.wav-ea468a3f31d18b458568aa100e61ff18.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
