@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ywys3t2eych3"]
+[gd_scene load_steps=4 format=3 uid="uid://ywys3t2eych3"]
 
 [ext_resource type="Script" path="res://Scene/Level/level_1.gd" id="1_lkcji"]
 [ext_resource type="PackedScene" uid="uid://cjhm7w28du2pn" path="res://Asset/Map/map_1.tscn" id="2_uxqli"]
+[ext_resource type="PackedScene" uid="uid://by6lsq6l8lmxi" path="res://Scene/Player/player.tscn" id="3_r2273"]
 
 [node name="Level1" type="Node3D" groups=["Level"]]
 script = ExtResource("1_lkcji")
 
 [node name="Map1" parent="." instance=ExtResource("2_uxqli")]
+
+[node name="Player" parent="." instance=ExtResource("3_r2273")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890826, -19.6955)

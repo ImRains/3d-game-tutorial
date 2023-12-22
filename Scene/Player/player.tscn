@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://by6lsq6l8lmxi"]
+
+[ext_resource type="PackedScene" uid="uid://dvbssegictiun" path="res://Scene/Player/character_skin.tscn" id="1_53olg"]
+[ext_resource type="Script" path="res://Scene/Player/player.gd" id="1_yod2m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_khggq"]
+height = 2.5
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_yod2m")
+
+[node name="CharacterRotationRoot" type="Node3D" parent="."]
+
+[node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("1_53olg")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("CapsuleShape3D_khggq")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(-1, -2.99004e-08, 8.21506e-08, 0, 0.939693, 0.34202, -8.74228e-08, 0.34202, -0.939693, 0, 0.810566, -0.598145)
+collision_mask = 0
+spring_length = 15.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+fov = 35.0

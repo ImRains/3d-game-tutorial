@@ -204,7 +204,6 @@ data = PackedVector3Array(2.8, 0.3999, -3.8, -1, 0.3999, 3.7999, 1.4, 0.3999, -3
 [node name="Build" type="Node3D"]
 
 [node name="fence2" type="Node3D" parent="."]
-visible = false
 
 [node name="fence" type="MeshInstance3D" parent="fence2"]
 mesh = SubResource("ArrayMesh_tunxt")
