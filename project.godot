@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="3D游戏入门"
+config/tags=PackedStringArray("教程")
 run/main_scene="res://Scene/Level/level_1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
