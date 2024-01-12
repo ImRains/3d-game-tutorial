@@ -4,6 +4,7 @@ class_name Player
 
 @onready var character_rotation_root: Node3D = $CharacterRotationRoot
 @onready var character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
+@onready var camera_arm: SpringArm3D = $CameraArm
 
 
 # 速度
@@ -26,10 +27,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	# 获得方向
-	direction = (transform.basis * Vector3(-input_dir.x, 0, -input_dir.y)).normalized()
+	var _rotation:Quaternion = Quaternion.from_euler(Vector3(0, camera_arm.transform.basis.get_euler().y, 0))
+	direction = (_rotation * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	move_and_slide()

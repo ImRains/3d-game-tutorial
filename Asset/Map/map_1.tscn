@@ -41,6 +41,11 @@ adjustment_enabled = true
 
 [node name="Map1" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.65
+shadow_enabled = true
+
 [node name="Grid" type="Node3D" parent="."]
 
 [node name="Floor" type="GridMap" parent="Grid"]
@@ -84,9 +89,3 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6qa6r")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.45598, 0.536923, -0.709786, -0.184064, 0.837172, 0.515038, 0.870749, -0.104201, 0.480561, 0, 0, 0)
-light_angular_distance = 3.86
-light_bake_mode = 0
-shadow_enabled = true

@@ -20,7 +20,8 @@ func physics_process_update(delta: float) -> void:
 	
 	if player.velocity.length() > 0.1:
 		var characterDir = Vector2(player.velocity.z, player.velocity.x)
-		player.character_rotation_root.rotation.y = characterDir.angle()
+		var target_quaternion:Quaternion = Quaternion.from_euler(Vector3(0, characterDir.angle(), 0))
+		player.character_rotation_root.quaternion = player.character_rotation_root.quaternion.slerp(target_quaternion, delta * 10)
 	
 	# 方向为0，无输入事件
 	if player.direction == Vector3.ZERO:
