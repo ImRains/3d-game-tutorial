@@ -1,4 +1,6 @@
 extends SpringArm3D
+## 相机控制器
+class_name CameraArm
 
 ## 控制x轴上的旋转速度
 @export var x_speed: float = 5
@@ -36,6 +38,7 @@ var mouse_wheel: MOUSE_WHEEL_STATE = MOUSE_WHEEL_STATE.NONE
 var x:float = 0
 var y:float = 0
 
+## 初始化函数
 func _ready() -> void:
 	## 初始化x、y的值
 	x = transform.basis.get_euler().x

@@ -7,7 +7,7 @@ class_name Player
 @onready var camera_arm: SpringArm3D = $CameraArm
 
 
-# 速度
+## 速度
 const SPEED = 5.0
 # 跳跃
 const JUMP_VELOCITY = 4.5
