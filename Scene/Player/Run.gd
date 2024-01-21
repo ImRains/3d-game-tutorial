@@ -15,8 +15,8 @@ func physics_process_update(delta: float) -> void:
 		player.velocity.z = player.direction.z * player.SPEED
 		player.character_skin.is_moving = true
 	else:
-		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED * delta)
-		player.velocity.z = move_toward(player.velocity.z, 0, player.SPEED * delta)
+		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
+		player.velocity.z = move_toward(player.velocity.z, 0, player.SPEED)
 	
 	if player.velocity.length() > 0.1:
 		var characterDir = Vector2(player.velocity.z, player.velocity.x)
