@@ -5,12 +5,13 @@ class_name Player
 @onready var character_rotation_root: Node3D = $CharacterRotationRoot
 @onready var character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
 @onready var camera_arm: SpringArm3D = $CameraArm
+@onready var state_machine: StateMachine = $StateMachine
 
 
 ## 速度
 const SPEED = 5.0
 # 跳跃
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 14
 # 方向
 var direction: Vector3
 
@@ -21,11 +22,10 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _physics_process(delta: float) -> void:
 	# 添加重力
 	if not is_on_floor():
-		velocity.y -= gravity * delta
-
-	# 跳跃
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y -= gravity * delta * 2
+		# 高出掉落进入下落状态
+		if state_machine.current_state.name != "Jump" and state_machine.current_state.name != "Fall":
+			state_machine.change_state("Fall")
 
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	# 获得方向
@@ -33,3 +33,7 @@ func _physics_process(delta: float) -> void:
 	direction = (_rotation * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("jump") and is_on_floor():
+		state_machine.change_state("Jump")

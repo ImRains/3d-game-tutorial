@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://by6lsq6l8lmxi"]
+[gd_scene load_steps=10 format=3 uid="uid://by6lsq6l8lmxi"]
 
 [ext_resource type="PackedScene" uid="uid://dvbssegictiun" path="res://Scene/Player/character_skin.tscn" id="1_53olg"]
 [ext_resource type="Script" path="res://Scene/Player/player.gd" id="1_yod2m"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Script/StateMachine/StateMachine.gd" id="3_d7o5c"]
 [ext_resource type="Script" path="res://Scene/Player/Idle.gd" id="4_u7vbf"]
 [ext_resource type="Script" path="res://Scene/Player/Run.gd" id="5_eqnvm"]
+[ext_resource type="Script" path="res://Scene/Player/Jump.gd" id="7_p6vf2"]
+[ext_resource type="Script" path="res://Scene/Player/Fall.gd" id="8_qfc0v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_khggq"]
 height = 2.5
@@ -40,4 +42,12 @@ player = NodePath("../..")
 
 [node name="Run" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("5_eqnvm")
+player = NodePath("../..")
+
+[node name="Jump" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("7_p6vf2")
+player = NodePath("../..")
+
+[node name="Fall" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("8_qfc0v")
 player = NodePath("../..")
