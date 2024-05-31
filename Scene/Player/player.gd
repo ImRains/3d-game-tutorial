@@ -7,6 +7,13 @@ class_name Player
 @onready var camera_arm: SpringArm3D = $CameraArm
 @onready var state_machine: StateMachine = $StateMachine
 
+## ---------Player属性 -----------
+## 当前生命值
+@export var current_health:int = 10
+## 最大生命值
+@export var max_health:int = 10
+## 攻击力
+@export var attack_power:int = 1
 
 ## 速度
 const SPEED = 5.0
@@ -37,3 +44,12 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") and is_on_floor():
 		state_machine.change_state("Jump")
+	if event.is_action_pressed("mouse_left"):
+		state_machine.change_state("Attack")
+
+
+func _on_hit_box_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Enemy"):
+		## 敌人受到伤害
+		body.take_damage(attack_power)
+		pass

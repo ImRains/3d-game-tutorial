@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://by6lsq6l8lmxi"]
+[gd_scene load_steps=14 format=3 uid="uid://by6lsq6l8lmxi"]
 
 [ext_resource type="PackedScene" uid="uid://dvbssegictiun" path="res://Scene/Player/character_skin.tscn" id="1_53olg"]
 [ext_resource type="Script" path="res://Scene/Player/player.gd" id="1_yod2m"]
@@ -8,16 +8,61 @@
 [ext_resource type="Script" path="res://Scene/Player/Run.gd" id="5_eqnvm"]
 [ext_resource type="Script" path="res://Scene/Player/Jump.gd" id="7_p6vf2"]
 [ext_resource type="Script" path="res://Scene/Player/Fall.gd" id="8_qfc0v"]
+[ext_resource type="Script" path="res://Scene/Player/Attack.gd" id="9_a8uiu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0j1ll"]
+size = Vector3(2.82227, 2.16016, 1.87164)
+
+[sub_resource type="Animation" id="Animation_qv66y"]
+resource_name = "hit_box_attack"
+length = 0.6
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../StateMachine/Attack")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hit_box_enable"
+}, {
+"args": [],
+"method": &"hit_box_disable"
+}, {
+"args": [],
+"method": &"turn_idle"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mre58"]
+_data = {
+"hit_box_attack": SubResource("Animation_qv66y")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_khggq"]
 height = 2.5
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_yod2m")
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("1_53olg")]
+
+[node name="HitBox" type="Area3D" parent="CharacterRotationRoot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterRotationRoot/HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07849, 1.16068)
+shape = SubResource("BoxShape3D_0j1ll")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterRotationRoot/HitBox"]
+libraries = {
+"": SubResource("AnimationLibrary_mre58")
+}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
@@ -51,3 +96,11 @@ player = NodePath("../..")
 [node name="Fall" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("8_qfc0v")
 player = NodePath("../..")
+
+[node name="Attack" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("player", "hit_box_collision_shape", "hit_box_animation_player")]
+script = ExtResource("9_a8uiu")
+player = NodePath("../..")
+hit_box_collision_shape = NodePath("../../CharacterRotationRoot/HitBox/CollisionShape3D")
+hit_box_animation_player = NodePath("../../CharacterRotationRoot/HitBox/AnimationPlayer")
+
+[connection signal="body_entered" from="CharacterRotationRoot/HitBox" to="." method="_on_hit_box_body_entered"]

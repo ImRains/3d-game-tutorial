@@ -24,3 +24,7 @@ func jump() -> void:
 ## 下落动画播放
 func fall() -> void:
 	state_machine.travel("Fall")
+
+## 播放攻击动画
+func attack() -> void:
+	animation_tree["parameters/Attack/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE

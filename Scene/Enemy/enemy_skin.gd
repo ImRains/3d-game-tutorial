@@ -15,3 +15,9 @@ class_name EnemySkin
 			state_machine.travel("Run")
 		else:
 			state_machine.travel("Idle")
+
+func hit() -> void:
+	animation_tree["parameters/HitShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
+func death() -> void:
+	state_machine.start("Death")

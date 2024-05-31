@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p36o5"]
 height = 2.36
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_3evor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
